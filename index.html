@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array</title>
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    
+</head>
+<body class="flex justify-center py-20">
+
+<!--Array Examples-->
+<div class="bg-white p-8 py-20 rounded-xl shadow-lg w-96 text-center">
+<h2 class="text-2xl font-bold text-blue-900 mb-4">🛒my shopping Cart</h2>
+
+<div class="flex gap-2 mb-6">
+<input type="text" id="itemInput" placeholder="What do you want to buy?" class="border p-2 rounded w-full">
+<button onclick="addToCart()" class="bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700">Add
+
+</button>
+</div>
+
+
+<div class="bg-gray-100 p-4 rounded-lg text-left">
+    <p class="font-bold text-gray-700 mb-2">
+        Total Items: <span id="itemCount" class="text-blue-600">0</span>
+    </p>
+
+    <p id="cartDisplay" class="text-gray-600 italic">Your Cart is empty....</p>
+</div>
+
+
+
+
+</div>
+
+
+
+<!--guestvalue-->
+<div class="bg-white p-8 rounded-xl shadow-2xl w-[500px] text-center">
+    <h2 class="text-3xl font-black text-purple-900 mb-2">🕺 The VIP Club</h2>
+    <p class="text-gray-500 mb-6">Manage the guest line using Array Methods!</p>
+    
+    <input type="text" id="guestName" placeholder="Enter guest name..." class="border-2 border-purple-200 p-2 rounded-lg w-full mb-4 text-center text-lg font-bold">
+
+    <div class="grid grid-cols-2 gap-2 mb-2">
+        <button  onclick="useUnshift()"  class="bg-green-500 text-white p-2 rounded hover:bg-green-600">unshift() <br><span class="text-xs">Add to FRONT</span></button>
+        <button onclick="usePush()" class="bg-blue-500 text-white p-2 rounded hover:bg-blue-600">push() <br><span class="text-xs">Add to BACK</span></button>
+        <button onclick="useUnshift()" class="bg-red-500 text-white p-2 rounded hover:bg-red-600">shift() <br><span class="text-xs">Remove FRONT</span></button>
+        <button  onclick="usePop()" class="bg-orange-500 text-white p-2 rounded hover:bg-orange-600">pop() <br><span class="text-xs">Remove BACK</span></button>
+    </div>
+    
+    <button onclick="useSplice()" class="w-full bg-purple-600 text-white p-2 rounded hover:bg-purple-700 mb-6 mt-2">splice() <br><span class="text-xs">Sneak into MIDDLE (Index 1)</span></button>
+
+    <div class="bg-gray-100 p-4 rounded-lg border-2 border-dashed border-gray-300">
+        <h3 class="font-bold text-gray-700 mb-2">Current Line (Front to Back):</h3>
+        <p id="lineDisplay" class="text-xl text-purple-700 font-mono tracking-wide">Empty</p>
+    </div>
+
+    <marquee>Am good </marquee>
+</div>
+
+
+
+
+
+
+<script src="index.js"></script>
+
+</body>
+</html>

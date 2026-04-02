@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+    <script>
+    const worker = ['Ade1', 'Ade2', 'Ade3', 'Ade4']
+console.log(worker, "The slice worker")
+worker.slice(1)
+console.log(['Ade1', 'Ade2', 'Ade3', 'Ade4'].slice(3), "the worker slice3")
+
+
+
+
+worker.splice(2)
+console.log(worker, "the after in 33")
+
+const name = [1, 2, 3, 4, 5];
+const newname = name.slice(2);
+
+console.log(newname, "slice 1,4"); // [2, 3, 4]
+console.log(name);    // [1, 2, 3, 4, 5] (unchanged)
+
+
+const my = [1, 2, 3, 4, 5];
+const lastname = my.splice(2); // remove 2 elements starting at index 1
+
+console.log(lastname, "the update"); // [2, 3]
+console.log(my, "my new one");     // [1, 4, 5] (original array changed)
+
+
+
+//concat
+const girls = ['linda', 'itunu', 'linda']
+const boys = ['Osb', 'segun', 'ay']
+
+const allstudents = girls.concat(boys)
+console.log(allstudents, "The non mutating")
+
+
+//2 Map
+const theNumber = [10,20,3,6,8,90]
+
+const newNumber = theNumber.map((theNumber, i) =>{
+     const newNumber = theNumber * 10
+    console.log(`Old  Number = ${theNumber}, The new Number = ${newNumber}`)
+    return newNumber
+})
+
+console.log(newNumber,  "the nee")
+
+//filter - for checking less than or greater than number in an array
+const studentAges = [80, 20, 50, 40, 30, 40]
+studentAges.push(70)
+const aboveforty = studentAges.filter((age, i) => {
+    return age <= 40
+})
+
+console.log(aboveforty, "the Above 40s")
+
+
+//4 reduce
+// it use to mulitiply the actual number 
+const sumAll = studentAges.reduce((calculate, item, i) => {
+console.log(calculate, i, "i dey here")
+    return calculate + item
+})
+
+console.log(sumAll, "the sum all")
+
+
+const student = [70, 30, 10, 15, 12]
+
+const sum = student.reduce((adding, item, i) => {
+    console.log(adding, i, "My dey oo")
+    return adding + item 
+}
+)
+//find its used to check the actual age 
+const findedAge = studentAges.find((age, i) => {
+return age <= 70
+   })
+console.log(findedAge, "yeyeye")
+
+
+
+
+//find index 
+const theIndex = studentAges.findIndex((theAge, i) => {
+    return theAge === 40
+})
+console.log(theIndex, "The Index")
+
+
+//index of -- are using to check the index
+
+let student2 = ['Ade', "Ojo", 'tunde',"bolass"]
+
+const theIndexNow = student2.indexOf('ojo')
+console.log(theIndexNow)
+
+
+</script>
+</body>
+</html>
