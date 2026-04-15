@@ -1,0 +1,121 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Loops Demo</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f3f4f6;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 150px);
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 12px;
+      border: none;
+      border-radius: 12px;
+      color: white;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .blue { background: #3b82f6; }
+    .green { background: #22c55e; }
+    .purple { background: #a855f7; }
+    .yellow { background: #eab308; color: black; }
+    .red { background: #ef4444; }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      width: 300px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>JavaScript Loops Demo</h1>
+
+  <div class="grid">
+    <button class="blue" onclick="runForLoop()">for loop</button>
+    <button class="green" onclick="runWhileLoop()">while loop</button>
+    <button class="purple" onclick="runDoWhileLoop()">do...while</button>
+    <button class="yellow" onclick="runForOfLoop()">for...of</button>
+    <button class="red" onclick="runForInLoop()">for...in</button>
+  </div>
+
+  <div class="card">
+    <h3>Output:</h3>
+    <p id="output">Click a button to see result</p>
+  </div>
+
+  <script>
+    function runForLoop() {
+      let result = "for loop: ";
+      for (let i = 0; i < 5; i++) {
+        result += i + " ";
+      }
+      document.getElementById("output").innerText = result;
+    }
+
+    function runWhileLoop() {
+      let i = 0;
+      let result = "while loop: ";
+      while (i < 5) {
+        result += i + " ";
+        i++;
+      }
+      document.getElementById("output").innerText = result;
+    }
+
+    function runDoWhileLoop() {
+      let i = 0;
+      let result = "do...while loop: ";
+      do {
+        result += i + " ";
+        i++;
+      } while (i < 5);
+      document.getElementById("output").innerText = result;
+    }
+
+    function runForOfLoop() {
+      const arr = [10, 20, 30];
+      let result = "for...of loop: ";
+      for (let value of arr) {
+        result += value + " ";
+      }
+      document.getElementById("output").innerText = result;
+    }
+
+    function runForInLoop() {
+      const obj = { name: "Sam", age: 20 };
+      let result = "for...in loop: ";
+      for (let key in obj) {
+        result += key + ": " + obj[key] + " ";
+      }
+      document.getElementById("output").innerText = result;
+    }
+  </script>
+
+</body>
+</html>
+```

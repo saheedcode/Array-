@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Country App</title>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 15px 0;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.card {
+    padding: 15px;
+    background: white;
+    text-align: center;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.card:hover {
+    background: #ffe0b3;
+}
+
+.active {
+    background: orange !important;
+    color: white;
+}
+
+#topBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    padding: 10px;
+    display: none;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>🌍 Country Interactive App</h1>
+
+    <!-- Search -->
+    <input type="text" id="search" placeholder="Search country...">
+
+    <!-- Stats -->
+    <p id="count"></p>
+
+    <!-- Grid -->
+    <div class="grid" id="grid"></div>
+
+    <!-- Form -->
+    <form id="form">
+        <input type="text" id="newCountry" placeholder="Add new country">
+    </form>
+</div>
+
+<button id="topBtn">⬆ Top</button>
+
+<script>
+
+// DATA
+const countries = ["Nigeria","Ghana","Canada","Brazil","Japan","India","France","Germany"]
+
+const grid = document.getElementById("grid")
+const count = document.getElementById("count")
+const search = document.getElementById("search")
+const form = document.getElementById("form")
+const newCountry = document.getElementById("newCountry")
+const topBtn = document.getElementById("topBtn")
+
+// FUNCTION TO RENDER
+function displayCountries(list) {
+    grid.innerHTML = ""
+    count.textContent = `${list.length} countries`
+
+    list.forEach(country => {
+        const card = document.createElement("div")
+        card.className = "card"
+        card.textContent = country
+
+        // CLICK EVENT
+        card.addEventListener("click", () => {
+            card.classList.toggle("active")
+        })
+
+        // HOVER EVENT
+        card.addEventListener("mouseover", () => {
+            card.style.transform = "scale(1.05)"
+        })
+
+        card.addEventListener("mouseout", () => {
+            card.style.transform = "scale(1)"
+        })
+
+        grid.appendChild(card)
+    })
+}
+
+displayCountries(countries)
+
+// SEARCH (INPUT EVENT)
+search.addEventListener("input", () => {
+    const value = search.value.toLowerCase()
+    const filtered = countries.filter(c =>
+        c.toLowerCase().includes(value)
+    )
+    displayCountries(filtered)
+})
+
+// FORM SUBMIT
+form.addEventListener("submit", (e) => {
+    e.preventDefault()
+
+    if (newCountry.value.trim() !== "") {
+        countries.push(newCountry.value)
+        displayCountries(countries)
+        newCountry.value = ""
+    }
+})
+
+// KEYBOARD EVENT
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        search.value = ""
+        displayCountries(countries)
+    }
+})
+
+// SCROLL EVENT
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 200) {
+        topBtn.style.display = "block"
+    } else {
+        topBtn.style.display = "none"
+    }
+})
+
+// BACK TO TOP BUTTON
+topBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" })
+})
+
+
+
+//check example of loop
+const person = { name: "Sam", age: 20, class: "ss2" };
+
+for (let key in person) {
+  console.log(key, person[key]);
+}
+</script>
+
+</body>
+</html>

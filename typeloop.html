@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script>
+
+
+//2.. Runs as long as a condition is true.
+let i = 0;
+
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+
+
+//1.. Used when you know how many times you want to run something
+for (let i = 1; i < 5; i++) {
+  console.log(i);
+}
+
+//2.. Runs as long as a condition is true.
+let i = 0;
+
+while (i < 5) {
+  console.log(i);
+  i++;
+}
+
+
+//3.. Runs at least once, then checks the condition.
+let i = 0;
+
+do {
+  console.log(i);
+  i++;
+} while (i < 5);
+
+//4.. Used to loop through values in an array or iterable.
+const arr = [10, 20, 30];
+
+for (let value of arr) {
+  console.log(value);
+}
+
+//5.. Used to loop through object properties (keys)
+const person = { name: "Sam", age: 20 };
+
+for (let key in person) {
+  console.log(key, person[key]);
+}
+
+
+
+    </script>
+</body>
+</html>
