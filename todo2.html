@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>To-Do App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+  <div class="bg-white shadow-lg rounded-2xl p-6 w-full max-w-md">
+    
+    <h1 class="text-2xl font-bold text-center mb-4">To-Do List</h1>
+
+    <div class="flex gap-2 mb-4">
+      <input 
+        id="task-input"
+        type="text" 
+        placeholder="Enter a task..."
+        class="flex-1 border rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+      >
+   
+      <button 
+        id="add-btn"
+        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition"
+      >
+        Add
+      </button>
+    </div>
+
+    <ul id="task-list" class="space-y-2"></ul>
+
+  </div>
+
+<script>
+  // 1. DATA
+  let tasks = [];
+
+  // 2. SELECT ELEMENTS
+  const input = document.getElementById("task-input");
+  const addBtn = document.getElementById("add-btn");
+  const list = document.getElementById("task-list");
+
+  // 3. ADD TASK
+  function addTask() {
+    const text = input.value.trim();
+    if (text === "") return;
+
+    const task = {
+      id: Date.now(),
+      text: text,
+      completed: false
+    };
+
+    tasks.push(task);
+    input.value = "";
+    renderTasks();
+  }
+
+  // 4. DELETE TASK
+  function deleteTask(id) {
+    tasks = tasks.filter(task => task.id !== id);
+    renderTasks();
+  }
+
+  // 5. TOGGLE COMPLETE
+  function toggleTask(id) {
+    tasks = tasks.map(task => {
+      if (task.id === id) {
+        return { ...task, completed: !task.completed };
+      }
+      return task;
+    });
+    renderTasks();
+  }
+
+  // 6. RENDER
+  function renderTasks() {
+    list.innerHTML = "";
+
+    tasks.forEach(task => {
+      const li = document.createElement("li");
+
+      li.className = "flex justify-between items-center bg-gray-100 px-3 py-2 rounded-lg";
+
+      li.innerHTML = `
+        <div class="flex items-center gap-2">
+          <input type="checkbox" ${task.completed ? "checked" : ""} />
+          <span class="${task.completed ? 'line-through text-gray-400' : ''}">
+            ${task.text}
+          </span>
+        </div>
+
+        <button class="text-red-500 hover:text-red-700">Delete</button>
+      `;
+
+      // checkbox toggle
+      li.querySelector("input").onclick = () => toggleTask(task.id);
+
+      // delete button
+      li.querySelector("button").onclick = () => deleteTask(task.id);
+
+      list.appendChild(li);
+    });
+  }
+
+  // 7. EVENT
+  addBtn.addEventListener("click", addTask);
+</script>
+
+</body>
+</html>
